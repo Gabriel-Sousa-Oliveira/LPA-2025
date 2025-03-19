@@ -1,5 +1,3 @@
-import sys
-
 nome_sobrenome = input('Olá, digite o seu nome e sobrenome por favor! ')
 print(f'Olá {nome_sobrenome}, Seja bem-vindo ao menu de compras da loja de açai e cupuaçu do Gabriel Sousa Oliveira!')
 
@@ -7,14 +5,11 @@ Sabores = {
 "AC" :  "Açai",
 "CP":  "Cupuaçu"
 }
-
 Tamanhos = {
     "P": "Pequeno",
     "M": "Médio",
     "G": "Grande"
 }
-
-
 precos = {
     "Pequeno": {"CP": 9, "AC": 11},
     "Médio": {"CP": 14, "AC": 16},
@@ -28,7 +23,7 @@ while True:
 
         if Sabor == 'Cancelar':
             print("Pedido Cancelado")
-            sys.exit()
+            break
     
         if Sabor in Sabores:
             nome_sabor = Sabores[Sabor]
@@ -44,7 +39,7 @@ while True:
 
         if Tamanho == 'Cancelar':
             print("Pedido Cancelado")
-            sys.exit()            
+            break          
     
         if Tamanho in Tamanhos:
             nome_tamanho = Tamanhos[Tamanho]

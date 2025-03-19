@@ -1,0 +1,74 @@
+def escolha_servico():
+    servicos = {
+        "DIG": {"Nome": "Digitalização", "Preço": 1.10},
+        "ICO": {"Nome": "Impressão Colorida", "Preço": 1.00},
+        "IPB": {"Nome": "Impressão Preto e Branco", "Preço": 0.40},
+        "FOT": {"Nome": "Fotocópia", "Preço": 0.20}
+    }
+    while True:
+        pedido = input("Por favor, digite a opção desejada [DIG/ICO/IPB/FOT]: ").upper()
+        if pedido in servicos:
+            return servicos[pedido]["Nome"], servicos[pedido]["Preço"]
+        else:
+            print("Opção inválida, tente novamente.")
+
+def num_pagina():
+    while True:
+        try:
+            paginas = int(input("Digite o número de páginas: "))
+            if paginas >= 20000:
+                print("Quantidade de páginas excede o limite permitido. Tente novamente.")
+            elif paginas >= 2000:
+                return paginas * 0.75  # Desconto de 25%
+            elif paginas >= 200:
+                return paginas * 0.80  # Desconto de 20%
+            elif paginas >= 20:
+                return paginas * 0.85  # Desconto de 15%
+            else:
+                return paginas  # Sem desconto
+        except ValueError:
+            print("Entrada inválida! Digite um número válido.")
+
+def servico_extra():
+    extras = {
+        "1": {"Nome": "Encadernação Simples", "Preço": 15.00},
+        "2": {"Nome": "Encadernação Capa Dura", "Preço": 40.00},
+        "0": {"Nome": "Nenhuma das opções", "Preço": 0.00}
+    }
+    print("1-Encadernação Simples")
+    print("2 - Encadernação Capa Dura")
+    print("0 -Nenhuma das opções")
+    while True:
+        extra = input("Escolha um serviço adicional (1/2/0): ")
+        if extra in extras:
+            return extras[extra]["Nome"], extras[extra]["Preço"]
+        else:
+            print("Opção inválida, tente novamente.")
+
+# Código principal (main)
+print("Olá! Seja bem-vindo ao menu da copiadora do Gabriel Sousa Oliveira!")
+nome_sobrenome = input("Digite seu nome e sobrenome: ")
+print(f"Olá {nome_sobrenome}, vamos iniciar seu pedido!")
+print("DIG - Digitalização - R$1,10 por página")
+print("FOT - Fotocópia - R$0,20 por página")
+print("IPB - Preto e branco - R$0,40 por página")
+print("ICO - Impresão Colorida - R$1,00 por página")
+
+total = 0.0
+while True:
+    nome_servico, preco_servico = escolha_servico()
+    num_paginas_com_desconto = num_pagina()
+    nome_extra, preco_extra = servico_extra()
+    
+    subtotal = (preco_servico * num_paginas_com_desconto) + preco_extra
+    total += subtotal
+    
+    print(f"Você escolheu {nome_servico}, com {int(num_paginas_com_desconto)} páginas, e adicional {nome_extra}.")
+    print(f"Subtotal do item: R$ {subtotal:.2f}")
+    print(f"Total acumulado: R$ {total:.2f}")
+    
+    continuar = input("Deseja adicionar mais itens? (S/N): ").strip().upper()
+    if continuar == "N":
+        print(f"\nCompra finalizada. Total a pagar: R$ {total:.2f}")
+        print(f"Obrigado, {nome_sobrenome}, por comprar conosco!")
+        break
