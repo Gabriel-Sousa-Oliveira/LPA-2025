@@ -72,7 +72,7 @@ while True:
 
 
 
-    print("Escolha um serviço:")
+print("Escolha um serviço:")
 print("DIG - Digitalização")
 print("FOT - Fotocópia")
 print("IPB - Preto e branco")
