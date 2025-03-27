@@ -1,22 +1,21 @@
 print("Bem-vindo ao sistema do Acervo Bibliográfico - Gabriel Sousa Oliveira")
 
-# Lista para armazenar os registros (simulando um "banco de dados")
+# Lista para armazenar os registros.
 lista_livro = []
 id_global = 1  # Começa em 1 para evitar ID 0
 
 def exibir_menu():
-    """Exibe o menu principal e retorna a opção escolhida pelo usuário."""
+    #Exibe o menu principal e retorna a opção escolhida pelo usuário.
     print("\n=== MENU PRINCIPAL ===")
-    print("1 - Adicionar Novo Registro")
-    print("2 - Listar Registros")
-    print("3 - Atualizar Registro")
-    print("4 - Excluir Registro")
-    print("5 - Sair")
+    print("1 - Adicionar Novo Livro")
+    print("2 - Lista de livros")
+    print("3 - Excluir Registro")
+    print("4 - Sair")
     
     return input("Digite a opção desejada: ")
 
 def cadastrar_livro():
-    """Cadastra um novo livro no sistema."""
+    #Cadastra um novo livro no sistema.
     global id_global  # Permite modificar a variável global
     titulo = input("Digite o nome do livro: ")
     autor = input("Digite o autor do livro: ")
@@ -35,7 +34,7 @@ def cadastrar_livro():
     id_global += 1  # Incrementa o ID para o próximo livro
 
 def consultar_livros():
-    """Consulta livros de diferentes formas."""
+    #Consulta livros de diferentes formas.
     if not lista_livro:
         print(" Nenhum livro cadastrado.")
         return
@@ -45,23 +44,34 @@ def consultar_livros():
     
     if opcao == "1":
         for livro in lista_livro:
-            print(livro)
+            print(f"ID: {livro['id']}")
+            print(f"Título: {livro['titulo']}")
+            print(f"Autor: {livro['autor']}")
+            print(f"Editora: {livro['editora']}\n")
+            
     elif opcao == "2":
         id_livro = int(input("Digite o ID do livro: "))
         encontrado = False
         for livro in lista_livro:
             if livro["id"] == id_livro:
-                print(livro)
+                print(f"ID: {livro['id']}")
+                print(f"Título: {livro['titulo']}")
+                print(f"Autor: {livro['autor']}")
+                print(f"Editora: {livro['editora']}\n")
                 encontrado = True
                 break
         if not encontrado:
-            print("⚠️ Livro não encontrado.")
+            print(" Livro não encontrado.")
     elif opcao == "3":
         autor = input("Digite o autor do livro: ")
         livros_autor = [livro for livro in lista_livro if livro["autor"].lower() == autor.lower()]
         if livros_autor:
             for livro in livros_autor:
-                print(livro)
+                print(f"ID: {livro['id']}")
+                print(f"Título: {livro['titulo']}")
+                print(f"Autor: {livro['autor']}")
+                print(f"Editora: {livro['editora']}\n")
+                
         else:
             print(" Nenhum livro encontrado para esse autor.")
     elif opcao == "4":
@@ -70,7 +80,7 @@ def consultar_livros():
         print(" Opção inválida!")
 
 def remover_livro():
-    """Remove um livro pelo ID."""
+    #Remove um livro pelo ID.
     if not lista_livro:
         print(" Nenhum livro cadastrado para remover.")
         return
@@ -95,10 +105,8 @@ while True:
     elif opcao == "2":
         consultar_livros()
     elif opcao == "3":
-        print("🚧 Funcionalidade de atualização ainda não implementada.")
-    elif opcao == "4":
         remover_livro()
-    elif opcao == "5":
+    elif opcao == "4":
         print(" Saindo do sistema.")
         break
     else:

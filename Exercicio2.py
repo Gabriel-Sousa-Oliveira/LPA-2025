@@ -29,7 +29,8 @@ while True:
             nome_sabor = Sabores[Sabor]
             break
         else:
-         print(f"Desculpe, esse sabor não está disponível, tente novamente ") 
+         print(f"Desculpe, esse sabor não está disponível, tente novamente ")
+         continue 
 
     print(f" Boa escolha, {nome_sabor} esta disponivel") # Exibe o sabor escolhido
     
@@ -46,7 +47,8 @@ while True:
             print(f'Você escolheu o tamanho {nome_tamanho} ') # Exibe o tamanho escolhido
             break
         else:
-            print(" o tamanho digitado é invalido")   
+            print(" o tamanho digitado é invalido")
+            continue
         
     preco_item = precos[nome_tamanho][Sabor]
     total += preco_item # Atualiza o total da compra
@@ -55,9 +57,17 @@ while True:
     print(f" {nome_sabor} {nome_tamanho} adicionado ao pedido! Preço: R$ {total:.2f}")
     print(f"Total atual da compra: R$ {total:.2f}")
 
-    continuar = input("\nDeseja adicionar mais itens? (S/N): ").strip().upper() # Pergunta se deseja adicionar mais itens
-    if continuar == "N":
-        print("\n Compra finalizada.")
-        print(f"Total da compra: R$ {total:.2f}")
-        print(f"Obrigado {nome_sobrenome} por comprar conosco! ")
-        break # Encerra o loop
+    while True:
+        continuar = input("\nDeseja adicionar mais itens? (S/N): ")
+    
+        if continuar == "S":
+         break  # Continua o loop principal para adicionar mais itens
+    
+        elif continuar == "N":
+            print("\nCompra finalizada.")
+            print(f"Total da compra: R$ {total:.2f}")
+            print(f"Obrigado {nome_sobrenome} por comprar conosco! ")
+            exit()  # Sai do programa
+    
+        else:
+            print("Entrada inválida! Por favor, digite 'S' para continuar comprando ou 'N' para finalizar seu pedido.")

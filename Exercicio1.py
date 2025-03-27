@@ -1,4 +1,4 @@
-nome_sobrenome = input('Olá, digite o seu nome e sobrenome por favor! ') #Pede ao uUsuário sua idenfiticação ( nome e sobrenome))
+nome_sobrenome = input('Olá, digite o seu nome e sobrenome por favor! ') #Pede ao Usuário sua idenfiticação ( nome e sobrenome))
 print(f'Olá {nome_sobrenome}, Seja bem-vindo ao menu de compras do Gabriel Sousa Oliveira!') #Mostra ao usuário uma mensagem de boas vindas
 
 Quantidade = int(input('Digite a quantidade desejada: ')) #Pede ao usuário a quantidade desejada

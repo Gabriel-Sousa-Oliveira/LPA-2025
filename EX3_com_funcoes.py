@@ -6,7 +6,7 @@ def escolha_servico(): # Função para escolher o serviço
         "FOT": {"Nome": "Fotocópia", "Preço": 0.20}
     }
     while True:
-        pedido = input("Por favor, digite a opção desejada [DIG/ICO/IPB/FOT]: ").upper()
+        pedido = input("Por favor, digite a opção desejada [DIG/ICO/IPB/FOT]: ")
         if pedido in servicos:
             return servicos[pedido]["Nome"], servicos[pedido]["Preço"]
         else:
@@ -19,12 +19,16 @@ def num_pagina(): # Função para escolher o número de páginas
             if paginas >= 20000:
                 print("Quantidade de páginas excede o limite permitido. Tente novamente.")
             elif paginas >= 2000:
-                return paginas * 0.75  # Desconto de 25%
+                print("Seu desconto será de 25%. ")
+                return paginas * 0.75  # Desconto de 25%  
             elif paginas >= 200:
+                print("Seu desconto será de 20%. ")
                 return paginas * 0.80  # Desconto de 20%
             elif paginas >= 20:
+                print("Seu desconto será de 15%.")
                 return paginas * 0.85  # Desconto de 15%
             else:
+                print("Pedido sem desconto " )
                 return paginas  # Sem desconto
         except ValueError:
             print("Entrada inválida! Digite um número válido.")
@@ -67,7 +71,7 @@ while True:
     print(f"Subtotal do item: R$ {subtotal:.2f}")
     print(f"Total acumulado: R$ {total:.2f}")
     
-    continuar = input("Deseja adicionar mais itens? (S/N): ").strip().upper() # Pergunta se deseja adicionar mais itens
+    continuar = input("Deseja adicionar mais itens? (S/N): ") # Pergunta se deseja adicionar mais itens
     if continuar == "N": # Se a resposta for 'N', finaliza a compra
         print(f"\nCompra finalizada. Total a pagar: R$ {total:.2f}")
         print(f"Obrigado, {nome_sobrenome}, por comprar conosco!")
